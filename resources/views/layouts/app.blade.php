@@ -15,7 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('fonts/font-awesome.min.css')}}">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -43,8 +43,9 @@
                                     Category
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Beach</a>
-                                    <a class="dropdown-item" href="#">Mountain</a>
+                                    @foreach($categories as $c)
+                                        <a class="dropdown-item" href="{{url('/'.$c->id.'/category')}}">{{$c->name}}</a>
+                                     @endforeach
                                 </div>
                             </li>
 
@@ -63,10 +64,10 @@
                             @endif
                             @if(Auth::user()->role == "user")
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Profil</a>
+                                    <a class="nav-link" href="{{url('/'.Auth::user()->id.'/edit')}}">Profil</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Blog</a>
+                                    <a class="nav-link" href="{{url('/'.Auth::user()->id.'/article')}}">Blog</a>
                                 </li>
                             @endif
                     @endguest
