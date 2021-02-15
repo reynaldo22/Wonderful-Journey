@@ -22,13 +22,14 @@
 </head>
 <body>
         <div class="jumbotron jumbotron-fluid">
-            <div class="container">
+            <div class="container-fluid">
                 <h1 class="display-4 text-center">Wonderful Journey</h1>
                 <p class="lead text-center">Blog of Indonesian Tourism</p>
             </div>
         </div>
 
     <div id="app">
+        <div class="container-md">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -36,6 +37,7 @@
                 </a>
 
                 <ul class="navbar-nav mr-auto">
+                    {{-- home --}}
                     @guest
                         @if (Route::has('register'))
                             <li class="nav-item dropdown">
@@ -54,14 +56,16 @@
                             </li>
                         @endif
                         @else
+                        {{-- admin --}}
                             @if(Auth::user()->role == "admin")
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Admin</a>
+                                    <a class="nav-link" href="{{url("/admin")}}">Admin</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">User</a>
+                                    <a class="nav-link" href="{{url("/user")}}">User</a>
                                 </li>
                             @endif
+                            {{-- user --}}
                             @if(Auth::user()->role == "user")
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{url('/'.Auth::user()->id.'/edit')}}">Profil</a>
@@ -120,6 +124,7 @@
         <main class="py-4">
             @yield('content')
         </main>
+        </div>
     </div>
 </body>
 </html>

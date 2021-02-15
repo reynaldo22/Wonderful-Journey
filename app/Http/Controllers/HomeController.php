@@ -36,6 +36,16 @@ class HomeController extends Controller
         return view('home',compact('users'));
     }
 
+    public function getAdmin() {
+        $users = User::all()->where('role', "admin");
+        return view('admin',compact('users'));
+    }
+
+    public function get() {
+        $users = User::all()->where('role', "user");
+        return view('user',compact('users'));
+    }
+
     public function destroy($id)
     {
         User::destroy($id);

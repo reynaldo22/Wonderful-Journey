@@ -25,6 +25,8 @@ Route::get('/{id}/detail','IndexController@detail'); // show detail
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@getUser'); // show user
+Route::get('/admin', 'HomeController@getAdmin'); // show admin
+Route::get('/user', 'HomeController@get'); // show user only
 Route::get('/{id}/delete','HomeController@destroy'); // delete user
 Route::get('/{id}/edit','IndexController@edit'); // edit profil user
 Route::post('/{id}/update','IndexController@update'); // update profil user
