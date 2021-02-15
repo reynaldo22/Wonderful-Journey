@@ -11,6 +11,33 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('categories')->insert([
+            [
+                'name' => "Beach",
+            ],
+            [
+                'name' => 'Mountain',
+            ]
+        ]);
+
+        DB::table('articles')->insert([
+            [
+                'user_id' => 4,
+                'categories_id' => 1,
+                'title' => 'Pantai Kuta Bali',
+                'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi repellat',
+                'image' => 'b1.jpeg',
+            ],
+            [
+                'user_id' => 4,
+                'categories_id' => 1,
+                'title' => 'Pantai',
+                'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi repellat',
+                'image' => 'b2.jpeg',
+            ]
+        ]);
+
+
         // $this->call(UserSeeder::class);
     }
 }

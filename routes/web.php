@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/', 'IndexController@index'); // show article
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@getUser'); // show user
+Route::get('/{id}/delete','HomeController@destroy'); // delete user
